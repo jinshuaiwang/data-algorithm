@@ -8,7 +8,7 @@ import lombok.Data;
  * Date: 2019-05-22 15:52
  * Email: wangjinshuai@jd.com
  */
-public class LinkedList {
+public class LRULinkedList {
 
     /**
      * 头节点
@@ -23,6 +23,13 @@ public class LinkedList {
     private int totalCount = 10;
 
     private int currentCount;
+
+    public LRULinkedList() {
+    }
+
+    public LRULinkedList(int size) {
+        this.totalCount = size;
+    }
 
     /**
      * 添加

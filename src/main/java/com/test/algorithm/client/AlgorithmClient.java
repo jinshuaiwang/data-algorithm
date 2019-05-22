@@ -1,6 +1,6 @@
 package com.test.algorithm.client;
 
-import com.test.algorithm.linkedlist.LinkedList;
+import com.test.algorithm.linkedlist.LRULinkedList;
 
 /**
  * Description:
@@ -11,7 +11,7 @@ import com.test.algorithm.linkedlist.LinkedList;
 public class AlgorithmClient {
 
     public static void main(String[] args) {
-        LinkedList list = new LinkedList();
+        LRULinkedList list = new LRULinkedList();
 
         list.add("1");
         list.add("3");
@@ -29,6 +29,7 @@ public class AlgorithmClient {
         list.add("19");
         list.add("1");
         list.add("30");
+        list.add("3");
 
         System.out.println(list.size());
         list.print();
