@@ -10,8 +10,14 @@ import lombok.Data;
  */
 public class LinkedList {
 
-    private Node<Object> first;
+    /**
+     * 头节点
+     */
+    private Node<Object> head;
 
+    /**
+     * 哨兵节点（一个虚拟的空节点，不存储任何值，便于算法实现设置的）
+     */
     private Node<Object> guard;
 
     private int totalCount = 10;
@@ -30,8 +36,8 @@ public class LinkedList {
         Node node = new Node(obj, null);
 
         if (empty()) {
-            first = node;
-            guard = new Node<Object>(null, first);
+            head = node;
+            guard = new Node<Object>(null, head);
             currentCount++;
         } else if (currentCount >= totalCount) {
             if (contains(node)) {
@@ -50,7 +56,7 @@ public class LinkedList {
      * 打印链表
      */
     public void print(){
-        Node<Object> node = first;
+        Node<Object> node = head;
 
         StringBuilder result = new StringBuilder();
 
@@ -74,9 +80,9 @@ public class LinkedList {
     }
 
     private void addFirst(Node<Object> node) {
-        node.setNext(first);
+        node.setNext(head);
         guard.setNext(node);
-        first = node;
+        head = node;
     }
 
     /**
@@ -85,7 +91,7 @@ public class LinkedList {
      * @return
      */
     private boolean contains(Node<Object> node) {
-        Node temp = first;
+        Node temp = head;
 
         while (true) {
             if (null == temp) {
@@ -143,7 +149,7 @@ public class LinkedList {
      * @return
      */
     private boolean empty() {
-        return null == first;
+        return null == head;
     }
 
     @Data
