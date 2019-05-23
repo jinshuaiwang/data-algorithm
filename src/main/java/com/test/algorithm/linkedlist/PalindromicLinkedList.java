@@ -20,17 +20,7 @@ public class PalindromicLinkedList {
      */
     private Node<Object> assistHead;
 
-    private int totalCount;
-
-    private int currentCount;
-
-    public PalindromicLinkedList() {
-        totalCount = 10;
-    }
-
-    public PalindromicLinkedList(int size) {
-        this.totalCount = size;
-    }
+    private int size;
 
     /**
      * 添加
@@ -48,7 +38,7 @@ public class PalindromicLinkedList {
         } else {
             getTail().setNext(node);
         }
-        currentCount++;
+        size++;
     }
 
     /**
@@ -80,34 +70,45 @@ public class PalindromicLinkedList {
             return false;
         }
 
-        if (currentCount == 1) {
+        if (size == 1) {
             return true;
         }
 
         Node node = head;
+
+        add2Head(node);
+        Node fastNode = node.getFastNext();
+        Node slowNode = node.getSlowNext();
+
         while (true) {
-            if (null == node || null == node.getFastNext()) {
+            add2Head(slowNode.getItem());
+
+            if (null == fastNode || null == slowNode) {
                 break;
             }
 
-            add2Head(node);
-            node = node.getNext();
+            fastNode = fastNode.getFastNext();
+            slowNode = slowNode.getSlowNext();
         }
 
+        Node frontNode = assistHead;
+        Node behindNode = slowNode;
+
         while (true) {
-            if (null == node || null == node.getSlowNext()) {
+            if (null == frontNode && null == behindNode) {
                 return true;
             }
 
-            if ((null == node && null != node.getSlowNext()) || (null != node && null == node.getSlowNext()) ) {
+            if ((null == frontNode && null != behindNode) || (null != frontNode && null == behindNode)) {
                 return false;
             }
 
-            if (!node.getItem().equals(node.getSlowNext().getItem())) {
+            if (!frontNode.getItem().equals(behindNode.getItem())) {
                 return false;
             }
 
-            node = node.getNext();
+            frontNode = frontNode.getNext();
+            behindNode = behindNode.getNext();
         }
     }
 
@@ -116,17 +117,17 @@ public class PalindromicLinkedList {
      * @return
      */
     public int size() {
-        return currentCount;
+        return size;
     }
 
     /**
      * 添加到链表头部
-     * @param node
+     * @param item
      */
-    private void add2Head(Node node) {
-        Node temp = node;
+    private void add2Head(Object item) {
+        Node temp = new Node(item);
         if (null != assistHead) {
-            node.setNext(assistHead);
+            temp.setNext(assistHead);
         } else {
             temp.setNext(null);
         }
