@@ -2,38 +2,19 @@ package com.test.algorithm.linkedlist
 
 import spock.lang.Specification
 
-/**
- *
- * User: wangjinshuai
- * Time: 2019-05-22 11:23 PM 
- * Email: wangjinshuai@jd.com
- */
 class LRULinkedListTest extends Specification {
 
-    private LRULinkedList linkedList;
-
-    def setup(){
-        linkedList = new LRULinkedList(20);
-        linkedList.add("1");
-        linkedList.add("3");
-        linkedList.add("5");
-        linkedList.add("7");
-        linkedList.add("9");
-        linkedList.add("11");
-        linkedList.add("14");
-        linkedList.add("19");
-        linkedList.add("25");
-        linkedList.add("30");
-        linkedList.add("39");
-        linkedList.add("41");
-
-        linkedList.add("19");
-        linkedList.add("1");
-        linkedList.add("30");
-        linkedList.add("3");
+    void setup() {
     }
 
-    def abc () {
-        assert linkedList.size() == 10
+    void cleanup() {
+    }
+
+    def "Add"() {
+        def lRULinkedList = new LRULinkedList()
+        lRULinkedList.add("1")
+
+        expect:
+        lRULinkedList.size == 1
     }
 }
