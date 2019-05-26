@@ -14,6 +14,8 @@ public class PalindromicLinkedListTest {
         linkedList.add("2");
         linkedList.add("1");
         linkedList.add("1");
+//        linkedList.add("1");
+//        linkedList.add("1");
         linkedList.add("2");
 
         linkedList.print();

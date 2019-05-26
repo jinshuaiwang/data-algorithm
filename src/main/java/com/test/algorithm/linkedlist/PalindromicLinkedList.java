@@ -76,17 +76,16 @@ public class PalindromicLinkedList {
 
         Node node = head;
 
-        add2Head(node);
+        add2Head(node.getItem());
         Node fastNode = node.getFastNext();
         Node slowNode = node.getSlowNext();
 
         while (true) {
-            add2Head(slowNode.getItem());
-
             if (null == fastNode || null == slowNode) {
                 break;
             }
 
+            add2Head(slowNode.getItem());
             fastNode = fastNode.getFastNext();
             slowNode = slowNode.getSlowNext();
         }
@@ -128,8 +127,6 @@ public class PalindromicLinkedList {
         Node temp = new Node(item);
         if (null != assistHead) {
             temp.setNext(assistHead);
-        } else {
-            temp.setNext(null);
         }
 
         assistHead = temp;
