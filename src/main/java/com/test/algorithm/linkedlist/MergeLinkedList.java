@@ -48,10 +48,12 @@ public class MergeLinkedList {
 
         if (null == firstLinkedListHead) {
             head = secondLinkedListHead;
+            return;
         }
 
         if (null == secondLinkedListHead) {
             head = firstLinkedListHead;
+            return;
         }
 
         Node firstTemp = firstLinkedListHead;

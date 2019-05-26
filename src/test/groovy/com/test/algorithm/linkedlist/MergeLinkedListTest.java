@@ -10,7 +10,7 @@ public class MergeLinkedListTest {
     public static void main(String[] args) {
         MergeLinkedList linkedList = new MergeLinkedList();
 
-        MergeLinkedList.Node firstLinkedListHead = linkedList.init(new int[]{1, 2, 3, 6, 9});
+        MergeLinkedList.Node firstLinkedListHead = linkedList.init(null);
         MergeLinkedList.Node secondLinkedListHead = linkedList.init(new int[]{2, 8, 9, 15, 19, 30});
 
         linkedList.merge(firstLinkedListHead, secondLinkedListHead);
