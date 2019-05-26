@@ -85,6 +85,12 @@ public class PalindromicLinkedList {
                 break;
             }
 
+            // 奇数个节点
+            if (null == fastNode.getNext()) {
+                add2Head(slowNode.item);
+                break;
+            }
+
             add2Head(slowNode.getItem());
             fastNode = fastNode.getFastNext();
             slowNode = slowNode.getSlowNext();
