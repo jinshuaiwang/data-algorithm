@@ -1,40 +1,13 @@
 package com.test.algorithm.linkedlist;
 
+import com.test.algorithm.linkedlist.model.Node;
+
 /**
  * User: wangjinshuai 有序链表合并
  * Time: 2019-05-26 1:55 PM
  * Email: wangjinshuai@jd.com
  */
-public class MergeLinkedList {
-
-    private int size;
-
-    /**
-     * 头结点
-     */
-    private Node head;
-
-    /**
-     * 输出链表
-     */
-    public void print() {
-        if (empty()) {
-            return ;
-        }
-
-        Node node = head;
-        StringBuilder result = new StringBuilder();
-
-        while (true) {
-            if (node == null) {
-                break;
-            }
-            result.append(node.getItem()).append(" ");
-            node = node.getNext();
-        }
-
-        System.out.println("linked list:" + result);
-    }
+public class MergeLinkedList extends BaseLinkedList {
 
     /**
      * 链表合并
@@ -47,12 +20,12 @@ public class MergeLinkedList {
         }
 
         if (null == firstLinkedListHead) {
-            head = secondLinkedListHead;
+            setHead(secondLinkedListHead);
             return;
         }
 
         if (null == secondLinkedListHead) {
-            head = firstLinkedListHead;
+            setHead(firstLinkedListHead);
             return;
         }
 
@@ -84,109 +57,4 @@ public class MergeLinkedList {
         }
     }
 
-    /**
-     * 初始化链表
-     * @param intArray
-     * @return
-     */
-    public Node init(int[] intArray) {
-        if (null == intArray || intArray.length == 0) {
-            return null;
-        }
-
-        Node head = new Node(intArray[0]);
-        Node node = head;
-
-        for (int i = 1; i < intArray.length ; i++) {
-            node.setNext(new Node(intArray[i]));
-            node = node.getNext();
-        }
-
-        return head;
-    }
-
-    /**
-     * 链表大小
-     * @return
-     */
-    public int size() {
-        return size;
-    }
-
-    /**
-     * 追加的尾部节点
-     * @param node
-     */
-    private void add2Tail(Node node) {
-        if (null == node) {
-            return;
-        }
-
-        Node tailNode = getTail();
-        if (null == tailNode) {
-            head = node;
-        } else {
-            tailNode.setNext(node);
-        }
-    }
-
-    /**
-     * 找到尾节点
-     * @return
-     */
-    private Node<Object> getTail() {
-        Node node = head;
-        while (true) {
-            if (null == node || null == node.getNext()) {
-                return node;
-            }
-            node = node.getNext();
-        }
-    }
-
-    /**
-     * 判断是否空链表
-     * @return
-     */
-    private boolean empty() {
-        return null == head;
-    }
-
-    protected class Node<E> {
-
-        /**
-         * 数据
-         */
-        private E item;
-
-        /**
-         * 后继节点
-         */
-        private Node<E> next;
-
-        public Node(E item) {
-            this.item = item;
-        }
-
-        public Node(E item, Node<E> next) {
-            this.item = item;
-            this.next = next;
-        }
-
-        public E getItem() {
-            return item;
-        }
-
-        public void setItem(E item) {
-            this.item = item;
-        }
-
-        public Node<E> getNext() {
-            return next;
-        }
-
-        public void setNext(Node<E> next) {
-            this.next = next;
-        }
-    }
 }
