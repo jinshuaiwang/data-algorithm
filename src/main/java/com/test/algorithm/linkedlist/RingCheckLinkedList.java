@@ -10,6 +10,46 @@ import com.test.algorithm.linkedlist.model.Node;
 public class RingCheckLinkedList extends BaseLinkedList {
 
     /**
+     * 初始化链表，
+     * @param intArray
+     * @param position
+     */
+    public Node init(int[] intArray, int position) {
+        if (null == intArray || intArray.length == 0) {
+            return null;
+        }
+
+        if (position < 0 || position > intArray.length - 2) {
+            init(intArray);
+            return getHead();
+        }
+
+        Node ringNode = new Node(intArray[position]);
+        Node head = new Node(intArray[0]);
+        Node node = head;
+
+        for (int i = 1; i < intArray.length ; i++) {
+            if (position == i) {
+                node.setNext(ringNode);
+            } else {
+                if (i != intArray.length - 1) {
+                    node.setNext(new Node(intArray[i]));
+                }
+            }
+
+            if (i != intArray.length - 1) {
+                node = node.getNext();
+            }
+        }
+
+        node.setNext(ringNode);
+
+        if (node.setNext();) {}
+
+        return head;
+    }
+
+    /**
      * 校验链表中是否有环
      * @return
      */
@@ -22,13 +62,16 @@ public class RingCheckLinkedList extends BaseLinkedList {
         Node fast = getHead();
 
         while (true) {
+            if (null == slow.getNext() || null == fast.getFastNext()) {
+                return false;
+            }
+
             slow = slow.getNext();
-            fast = fast.getNext().getNext();
-            if (null == slow) {
-                break;
+            fast = fast.getFastNext();
+
+            if (slow.getItem().equals(fast.getItem())) {
+                return true;
             }
         }
-        return false;
     }
-
 }

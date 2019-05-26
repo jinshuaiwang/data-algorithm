@@ -41,4 +41,16 @@ public class Node<E> {
     public void setNext(Node<E> next) {
         this.next = next;
     }
+
+    /**
+     *
+     * @return
+     */
+    public Node<E> getFastNext() {
+        if (null == this || null == this.getNext()) {
+            return null;
+        }
+
+        return this.getNext().getNext();
+    }
 }
