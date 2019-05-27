@@ -23,7 +23,7 @@ public class LinkedListStack {
      */
     public void push(Node node) {
         if (null == node || null == node.getItem()) {
-            throw new RuntimeException();
+            throw new RuntimeException("invalid node");
         }
 
         if (!empty()) {
