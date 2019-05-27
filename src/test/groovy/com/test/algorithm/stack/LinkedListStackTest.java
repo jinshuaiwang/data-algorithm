@@ -1,6 +1,7 @@
 package com.test.algorithm.stack;
 
 import com.test.algorithm.linkedlist.model.Node;
+import com.test.algorithm.stack.model.LinkedListStack;
 
 /**
  * Description:

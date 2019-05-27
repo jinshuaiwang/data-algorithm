@@ -1,4 +1,4 @@
-package com.test.algorithm.stack;
+package com.test.algorithm.stack.model;
 
 import com.test.algorithm.linkedlist.model.Node;
 
@@ -10,6 +10,9 @@ import com.test.algorithm.linkedlist.model.Node;
  */
 public class LinkedListStack {
 
+    /**
+     * 栈顶
+     */
     private Node head;
 
     /**
