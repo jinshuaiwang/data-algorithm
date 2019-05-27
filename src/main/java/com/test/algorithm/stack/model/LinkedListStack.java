@@ -13,7 +13,7 @@ public class LinkedListStack {
     private Node head;
 
     /**
-     *
+     * 栈大小
      */
     private int size;
 
