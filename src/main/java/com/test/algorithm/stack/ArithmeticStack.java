@@ -31,9 +31,14 @@ public class ArithmeticStack {
             return -1;
         }
 
+        int result = 0;
+
         for (String temp : numberOperatorArray) {
+            boolean calcFlag = false;
             OperatorEnum operatorEnum = OperatorEnum.getOperatorEnumByOperator(temp);
             if (null == operatorEnum) {
+
+            } else {
 
             }
         }

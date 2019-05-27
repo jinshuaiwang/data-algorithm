@@ -13,12 +13,6 @@ import java.util.Comparator;
 public class OperatorComparator implements Comparator<OperatorEnum> {
 
     public int compare(OperatorEnum first, OperatorEnum second) {
-        if (first.getPriority() > second.getPriority()) {
-            return 1;
-        } else if (first.getPriority() == second.getPriority()) {
-            return 0;
-        } else {
-            return -1;
-        }
+        return first.getPriority() - second.getPriority();
     }
 }
