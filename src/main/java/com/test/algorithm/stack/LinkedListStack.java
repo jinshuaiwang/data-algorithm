@@ -1,4 +1,4 @@
-package com.test.algorithm.stack.model;
+package com.test.algorithm.stack;
 
 import com.test.algorithm.linkedlist.model.Node;
 
