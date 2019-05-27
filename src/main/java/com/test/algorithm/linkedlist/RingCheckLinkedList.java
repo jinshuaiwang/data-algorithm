@@ -3,7 +3,7 @@ package com.test.algorithm.linkedlist;
 import com.test.algorithm.linkedlist.model.Node;
 
 /**
- * User: wangjinshuai 检查 链表内是否有换
+ * User: wangjinshuai 检查 链表内是否有环
  * Time: 2019-05-26 1:55 PM
  * Email: wangjinshuai@jd.com
  */
@@ -14,15 +14,17 @@ public class RingCheckLinkedList extends BaseLinkedList {
      * @param intArray
      * @param position
      */
-    public Node init(int[] intArray, int position) {
+    public void init(int[] intArray, int position) {
         if (null == intArray || intArray.length == 0) {
-            return null;
+            return ;
         }
 
         if (position < 0 || position > intArray.length - 2) {
             init(intArray);
-            return getHead();
+            return ;
         }
+
+        setSize(intArray.length);
 
         Node ringNode = new Node(intArray[position]);
         Node head = new Node(intArray[0]);
@@ -32,21 +34,16 @@ public class RingCheckLinkedList extends BaseLinkedList {
             if (position == i) {
                 node.setNext(ringNode);
             } else {
-                if (i != intArray.length - 1) {
-                    node.setNext(new Node(intArray[i]));
-                }
+                node.setNext(new Node(intArray[i]));
             }
 
-            if (i != intArray.length - 1) {
+            if (null != node.getNext()) {
                 node = node.getNext();
             }
         }
 
         node.setNext(ringNode);
-
-        if (node.setNext();) {}
-
-        return head;
+        setHead(head);
     }
 
     /**
