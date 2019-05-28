@@ -35,6 +35,31 @@ public enum OperatorEnum {
         this.priority = priority;
     }
 
+    /**
+     * 比较操作符优先级
+     * @param firstOperator
+     * @param secondOperator
+     * @return
+     */
+    public static boolean highPriority(String firstOperator, String secondOperator) {
+        return getOperatorEnumByOperator(firstOperator).getPriority() >= getOperatorEnumByOperator(secondOperator).getPriority();
+    }
+
+    /**
+     * 获取运算符枚举
+     * @param operator
+     * @return
+     */
+    public static OperatorEnum getOperatorEnumByOperator(String operator) {
+        for (OperatorEnum operatorEnum : OperatorEnum.values()) {
+            if (operatorEnum.getName().equals(operator)) {
+                return operatorEnum;
+            }
+        }
+
+        return null;
+    }
+
     public String getName() {
         return name;
     }
@@ -57,20 +82,5 @@ public enum OperatorEnum {
 
     public void setPriority(int priority) {
         this.priority = priority;
-    }
-
-    /**
-     * 获取运算符枚举
-     * @param operator
-     * @return
-     */
-    public static OperatorEnum getOperatorEnumByOperator(String operator) {
-        for (OperatorEnum operatorEnum : OperatorEnum.values()) {
-            if (operatorEnum.getName().equals(operator)) {
-                return operatorEnum;
-            }
-        }
-
-        return null;
     }
 }

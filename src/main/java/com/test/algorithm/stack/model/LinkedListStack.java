@@ -59,4 +59,8 @@ public class LinkedListStack {
     public boolean empty() {
         return size == 0;
     }
+
+    public int getSize() {
+        return size;
+    }
 }
