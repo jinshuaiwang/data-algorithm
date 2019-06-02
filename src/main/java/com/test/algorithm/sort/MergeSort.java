@@ -10,50 +10,80 @@ public class MergeSort {
 
     /**
      * 排序
+     * @param items
+     * @param n
      */
-    public void sort(int[] items, int start, int end) {
+    public void sort(int[] items, int n) {
+        if (null == items || items.length < 2) {
+            return ;
+        }
+
+        sort(items, 0, n);
+    }
+
+    /**
+     * 排序
+     * @param items
+     * @param start
+     * @param end
+     */
+    private void sort(int[] items, int start, int end) {
         if (start >= end) {
-           return;
+            return;
         }
 
         int mid = (start + end) / 2;
-        sort(items, start, (mid - start));
-        sort(items, (mid + 1), end - (mid + 1));
+        sort(items, start, mid);
+        sort(items, mid + 1, end);
 
-        int[] temp = new int[end - start];
-        int firstIndex = start;
-        int secondIndex = mid + 1;
+        merge(items, start, end, mid);
+    }
 
+    /**
+     * 数组合并
+     * @param items
+     * @param start
+     * @param end
+     * @param mid
+     */
+    private void merge(int[] items, int start, int end, int mid) {
+        int frontIndex = start;
+        int endIndex = mid;
         int index = 0;
-        while (firstIndex <= mid && secondIndex < end) {
-            if (items[firstIndex] > items[secondIndex]) {
-                temp[index] = items[secondIndex];
-                secondIndex++;
-            } else {
-                temp[index] = items[firstIndex];
-                firstIndex++;
+
+        int[] temp = new int[end - start + 1];
+        while (true) {
+            if (frontIndex >= mid || endIndex >= end) {
+                break;
             }
+
+            if (items[frontIndex] <= items[endIndex]) {
+                temp[index] = items[frontIndex];
+                frontIndex++;
+            } else {
+                temp[index] = items[endIndex];
+                endIndex++;
+            }
+
             index++;
         }
 
-        if (firstIndex <= mid) {
-            for (int i = firstIndex; i <= mid; i++) {
-                temp[index] = items[firstIndex];
+        if (frontIndex < mid) {
+            for (; frontIndex <= mid; frontIndex++) {
+                temp[index] = items[frontIndex];
                 index++;
-                firstIndex++;
             }
         }
 
-        if (secondIndex < end) {
-            for (int i = secondIndex; i < end; i++) {
-                temp[index] = items[secondIndex];
+        if (endIndex < end) {
+            for (; endIndex <= end; endIndex++) {
+                temp[index] = items[endIndex];
                 index++;
-                secondIndex++;
             }
         }
 
         index = 0;
-        for (int i = start ;i < end; i++) {
+        for (int i = start; i <= end; i++) {
             items[i] = temp[index];
             index++;
         }

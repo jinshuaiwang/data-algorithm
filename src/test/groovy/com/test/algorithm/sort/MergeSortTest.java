@@ -9,10 +9,10 @@ package com.test.algorithm.sort;
 public class MergeSortTest {
 
     public static void main(String[] args) {
-        int[] array = new int[]{3, 5, 7, 2, 10, 3, 8, 20, 16, 1, 12, 28, 14, 29, 300, 30, 20};
+        int[] array = new int[]{3, 5, 7, 2, 10, 3, 8, 20, 16};
         MergeSort sort = new MergeSort();
 
-        sort.sort(array, 0, array.length);
+        sort.sort(array, array.length - 1);
 
         sort.print(array);
     }
