@@ -15,7 +15,7 @@ public class KMaxSort {
      * @return
      */
     public int kMax(int[] items, int k) {
-        if (null == items || items.length < 1 || k < 1 || k > items.length - 1) {
+        if (null == items || items.length < 1 || k < 0 || k > items.length) {
             return -1;
         }
 
@@ -27,7 +27,7 @@ public class KMaxSort {
         while (true) {
             p = partition(items, start, end);
             if (p == k) {
-                result = items[p - 1];
+                result = items[p];
                 break;
             }
 

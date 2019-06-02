@@ -13,6 +13,7 @@ public class KMaxSortTest {
 
         // 20 14 13 9 5 2
         int[] items = {13, 20, 14, 2, 9, 5};
-        System.out.println(sort.kMax(items, 4));
+        int n = 100;
+        System.out.println(sort.kMax(items, n - 1));
     }
 }
