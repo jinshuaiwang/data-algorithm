@@ -27,21 +27,25 @@ public class KMaxSort {
         while (true) {
             p = partition(items, start, end);
             if (p == k) {
-                result = items[p];
+                result = items[p - 1];
+                break;
+            }
+
+            if (start >= end) {
                 break;
             }
 
             if (p > k) {
-                end = k - 1;
+                end = p - 1;
             } else {
-                start = k + 1;
+                start = p + 1;
             }
         }
 
         return result;
     }
 
-    private int partition(int[] items, int start, int end){
+    private int partition(int[] items, int start, int end) {
         int pivot = items[end];
 
         int p = start;

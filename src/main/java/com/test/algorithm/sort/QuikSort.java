@@ -18,7 +18,7 @@ public class QuikSort {
      * @param start
      * @param end
      */
-    public void sort(int[] items, int start, int end) {
+    private void sort(int[] items, int start, int end) {
         if (start >= end) {
             return;
         }
