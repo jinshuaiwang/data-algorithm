@@ -6,7 +6,7 @@ package com.test.algorithm.sort;
  * Date: 2019-06-02 11:14
  * Email: wangjinshuai@jd.com
  */
-public class QuikSort {
+public class QuickSort {
 
     public void sort(int[] items) {
         sort(items, 0, items.length - 1);
