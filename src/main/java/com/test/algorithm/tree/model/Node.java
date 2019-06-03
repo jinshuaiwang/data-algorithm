@@ -9,6 +9,11 @@ package com.test.algorithm.tree.model;
 public class Node<E> {
 
     /**
+     * 后继节点
+     */
+    private Node next;
+
+    /**
      * 左子节点
      */
     private Node leftChildNode;
@@ -39,5 +44,13 @@ public class Node<E> {
 
     public E getData() {
         return data;
+    }
+
+    public Node getNext() {
+        return next;
+    }
+
+    public void setNext(Node next) {
+        this.next = next;
     }
 }

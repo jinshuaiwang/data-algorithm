@@ -69,4 +69,55 @@ public class BinaryTree {
         postOrder(node.getRightChildNode());
         System.out.print(node.getData() + " ");
     }
+
+    /**
+     * 按层遍历
+     * @param node
+     */
+    public void levelOrder(Node node) {
+        if (null == node) {
+            return;
+        }
+
+        Node head = node;
+        while (head != node) {
+            // 输出当前层
+            print(head);
+            // 构造下一层
+            build(head);
+        }
+    }
+
+    /**
+     * 打印节点
+     * @param node
+     */
+    private void print(Node node){
+        if (null == node) {
+            return;
+        }
+
+        Node temp = node;
+        while (null != temp) {
+            System.out.print(temp.getData() + " ");
+            temp = node.getNext();
+        }
+    }
+
+    /**
+     * 构造head
+     * @param node
+     * @return
+     */
+    private Node build(Node node){
+        if (null == node) {
+            return null;
+        }
+
+        Node temp = node;
+
+        Node result = null;
+        return null;
+    }
+
 }
