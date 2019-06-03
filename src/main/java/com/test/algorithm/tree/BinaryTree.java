@@ -72,6 +72,7 @@ public class BinaryTree {
 
     /**
      * 按层遍历
+     * 输出当层节点，构建下一层节点（链表）
      * @param node
      */
     public void levelOrder(Node node) {
@@ -80,11 +81,13 @@ public class BinaryTree {
         }
 
         Node head = node;
-        while (head != node) {
+        while (head != null) {
+
             // 输出当前层
             print(head);
+            System.out.println();
             // 构造下一层
-            build(head);
+            head = build(head);
         }
     }
 
@@ -100,7 +103,7 @@ public class BinaryTree {
         Node temp = node;
         while (null != temp) {
             System.out.print(temp.getData() + " ");
-            temp = node.getNext();
+            temp = temp.getNext();
         }
     }
 
@@ -115,9 +118,43 @@ public class BinaryTree {
         }
 
         Node temp = node;
+        Node resultHead = null;
+        Node resultTail = null;
 
-        Node result = null;
-        return null;
+        while (null != temp) {
+            if (null == resultHead) {
+                if (null == temp.getLeftChildNode() && null == temp.getRightChildNode()) {
+                    return null;
+                }
+
+                if (null == temp.getLeftChildNode() && null != temp.getRightChildNode()) {
+                    resultHead = temp.getRightChildNode();
+                    resultTail = resultHead;
+                } else if (null != temp.getLeftChildNode() && null == temp.getRightChildNode()) {
+                    resultHead = temp.getLeftChildNode();
+                    resultTail = resultHead;
+                } else {
+                    resultHead = temp.getLeftChildNode();
+                    resultHead.setNext(temp.getRightChildNode());
+
+                    resultTail = temp.getRightChildNode();
+                }
+
+            } else {
+                if (null != temp.getLeftChildNode()) {
+                    resultTail.setNext(temp.getLeftChildNode());
+                    resultTail = temp.getLeftChildNode();
+                }
+
+                if (null != temp.getRightChildNode()) {
+                    resultTail.setNext(temp.getRightChildNode());
+                    resultTail = temp.getRightChildNode();
+                }
+            }
+
+            temp = temp.getNext();
+        }
+        return resultHead;
     }
 
 }

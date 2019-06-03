@@ -21,5 +21,9 @@ public class BinaryTreeTest {
         System.out.println();
 
         tree.postOrder(root);
+        System.out.println();
+
+        tree.levelOrder(root);
+
     }
 }
