@@ -19,18 +19,23 @@ public class BinarySearchTree {
      * 初始化二叉查找树
      */
     public void init() {
-        Node node11 = new Node(null, null, 11);
-        Node node14 = new Node(null, null, 14);
+        Node node16 = new Node(null, null, 16);
+        Node node19 = new Node(null, null, 19);
+        Node node27 = new Node(null, null, 27);
+        Node node51 = new Node(null, null, 51);
+        Node node66 = new Node(null, null, 66);
+        Node node34 = new Node(null, null, 34);
 
-        Node node13 = new Node(node11, node14, 13);
+        Node node13 = new Node(null, node16, 13);
+        Node node25 = new Node(node19, node27, 25);
 
-        Node node9 = new Node(null, null, 9);
+        Node node58 = new Node(node51, node66, 58);
+        Node node18 = new Node(null, node25, 18);
+        Node node17 = new Node(node13, node18, 17);
+        Node node50 = new Node(node34, node58, 50);
+        Node node33 = new Node(node17, node50, 33);
 
-        Node node10 = new Node(node9, node13, 10);
-
-        Node node16 = new Node(node10, null, 16);
-
-        root = node16;
+        root = node33;
     }
 
     /**
@@ -60,6 +65,83 @@ public class BinarySearchTree {
                 }
             }
         }
+    }
+
+    /**
+     * 查找元素，不存在则返回-1
+     * @param data
+     * @return
+     */
+    public int search(int data) {
+        if (null == root) {
+            return -1;
+        }
+
+        Node node = root;
+        while (node != null) {
+            if (Integer.valueOf(node.getData().toString()) > data) {
+                node = node.getLeftChildNode();
+            } else if (Integer.valueOf(node.getData().toString()) < data) {
+                node = node.getRightChildNode();
+            } else {
+                return data;
+            }
+        }
+
+        return -1;
+    }
+
+    /**
+     * 删除节点 to be done
+     * @param data
+     * @return
+     */
+    public boolean delete(int data) {
+        if (null == root) {
+            return false;
+        }
+
+        Node node = root;
+        Node parentNode = null;
+        boolean leftNode = false;
+
+        while (node != null) {
+            if (Integer.valueOf(node.getData().toString()) > data) {
+                parentNode = node;
+                node = node.getLeftChildNode();
+                leftNode = true;
+                continue;
+            }
+
+            if (Integer.valueOf(node.getData().toString()) < data) {
+                parentNode = node;
+                node = node.getRightChildNode();
+                leftNode = false;
+                continue;
+            }
+
+            if (Integer.valueOf(node.getData().toString()) == data) {
+                if (null == node.getLeftChildNode() && null == node.getRightChildNode()) {
+                    if (null != parentNode) {
+                        if (leftNode) {
+                            parentNode.setLeftChildNode(null);
+                        } else {
+                            parentNode.setRightChildNode(null);
+                        }
+                    }
+                    return true;
+                } else {
+                    if (null != parentNode) {
+                        if (leftNode) {
+                            parentNode.setLeftChildNode(null);
+                        } else {
+                            parentNode.setRightChildNode(null);
+                        }
+                    }
+                }
+            }
+        }
+        return false;
     }
 
     public Node getRoot() {
