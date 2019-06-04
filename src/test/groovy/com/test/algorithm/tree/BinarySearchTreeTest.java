@@ -28,5 +28,7 @@ public class BinarySearchTreeTest {
         searchTree.insert(15);
         binaryTree.midOrder(searchTree.getRoot());
         System.out.println();
+
+        binaryTree.levelOrder(searchTree.getRoot());
     }
 }

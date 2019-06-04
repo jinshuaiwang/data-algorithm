@@ -124,7 +124,8 @@ public class BinaryTree {
         while (null != temp) {
             if (null == resultHead) {
                 if (null == temp.getLeftChildNode() && null == temp.getRightChildNode()) {
-                    return null;
+                    temp = temp.getNext();
+                    continue;
                 }
 
                 if (null == temp.getLeftChildNode() && null != temp.getRightChildNode()) {
