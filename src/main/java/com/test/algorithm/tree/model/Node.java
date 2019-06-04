@@ -53,4 +53,12 @@ public class Node<E> {
     public void setNext(Node next) {
         this.next = next;
     }
+
+    public void setLeftChildNode(Node leftChildNode) {
+        this.leftChildNode = leftChildNode;
+    }
+
+    public void setRightChildNode(Node rightChildNode) {
+        this.rightChildNode = rightChildNode;
+    }
 }

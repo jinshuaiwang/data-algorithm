@@ -15,5 +15,18 @@ public class BinarySearchTreeTest {
         searchTree.init();
 
         binaryTree.midOrder(searchTree.getRoot());
+        System.out.println();
+
+        searchTree.insert(100);
+        binaryTree.midOrder(searchTree.getRoot());
+        System.out.println();
+
+        searchTree.insert(8);
+        binaryTree.midOrder(searchTree.getRoot());
+        System.out.println();
+
+        searchTree.insert(15);
+        binaryTree.midOrder(searchTree.getRoot());
+        System.out.println();
     }
 }

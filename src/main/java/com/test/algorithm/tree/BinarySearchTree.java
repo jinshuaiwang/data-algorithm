@@ -43,7 +43,23 @@ public class BinarySearchTree {
         }
 
         Node node = root;
-
+        while (true) {
+            if (Integer.valueOf(node.getData().toString()) > data) {
+                if (null == node.getLeftChildNode()) {
+                    node.setLeftChildNode(new Node(null, null, data));
+                    break;
+                } else {
+                    node = node.getLeftChildNode();
+                }
+            } else {
+                if (null == node.getRightChildNode()) {
+                    node.setRightChildNode(new Node(null, null, data));
+                    break;
+                } else {
+                    node = node.getRightChildNode();
+                }
+            }
+        }
     }
 
     public Node getRoot() {
