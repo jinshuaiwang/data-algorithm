@@ -15,6 +15,11 @@ public class Heap {
      */
     private int count;
 
+    /**
+     * 数据交换次数
+     */
+    private int swapCount;
+
     public Heap(int size) {
         items = new int[size];
     }
@@ -69,9 +74,7 @@ public class Heap {
 
         int k = items.length - 1;
         while (k > 1) {
-            int temp = items[k];
-            items[k] = items[1];
-            items[1] = temp;
+            swap(1, k);
 
             k--;
             count--;
@@ -79,6 +82,19 @@ public class Heap {
         }
 
         count = totalCount;
+    }
+
+    /**
+     * 数据交换
+     * @param sourceIndex
+     * @param destIndex
+     */
+    private void swap(int sourceIndex, int destIndex) {
+        int temp = items[sourceIndex];
+        items[sourceIndex] = items[destIndex];
+        items[destIndex] = temp;
+
+        swapCount++;
     }
 
     /**
@@ -121,10 +137,7 @@ public class Heap {
                 break;
             }
 
-            int temp = items[index];
-            items[index] = items[maxPosition];
-            items[maxPosition] = temp;
-
+            swap(index, maxPosition);
             index = maxPosition;
         }
     }
@@ -179,5 +192,9 @@ public class Heap {
         }
 
         System.out.println("堆：" + result.toString());
+    }
+
+    public int getSwapCount() {
+        return swapCount;
     }
 }

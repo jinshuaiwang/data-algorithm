@@ -28,5 +28,6 @@ public class HeapTest {
 
         heap.sort(items);
         heap.print();
+        System.out.println("数据交换次数:" + heap.getSwapCount());
     }
 }
