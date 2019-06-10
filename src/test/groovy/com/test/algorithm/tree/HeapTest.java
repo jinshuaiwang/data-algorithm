@@ -22,5 +22,11 @@ public class HeapTest {
 
         heap.delete(50);
         heap.print();
+
+        int[] items = new int[]{-1, 1, 8, 3, 18, 20, 16, 30, 48, 17};
+//        heap.buildHeap(items);
+
+        heap.sort(items);
+        heap.print();
     }
 }

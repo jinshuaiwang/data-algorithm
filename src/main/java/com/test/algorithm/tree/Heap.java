@@ -42,6 +42,46 @@ public class Heap {
     }
 
     /**
+     * 建堆
+     * @param items
+     */
+    public void buildHeap(int[] items) {
+        if (null == items) {
+            return ;
+        }
+
+        this.items = items;
+        this.count = items.length - 1;
+
+        for (int i = items.length / 2; i >= 1 ; i--) {
+            heapify(i);
+        }
+    }
+
+    /**
+     * 堆排序
+     * @param items
+     */
+    public void sort(int[] items) {
+        buildHeap(items);
+
+        int totalCount = count;
+
+        int k = items.length - 1;
+        while (k > 1) {
+            int temp = items[k];
+            items[k] = items[1];
+            items[1] = temp;
+
+            k--;
+            count--;
+            heapify(1);
+        }
+
+        count = totalCount;
+    }
+
+    /**
      * 删除元素
      * @param data
      * @return
